@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
@@ -9,6 +11,9 @@ class NewVisitorTest(StaticLiveServerTestCase): # (1）
 
     def setUp(self): # (3)
         self.browser=webdriver.Firefox()
+        staging_server=os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url='http://'+staging_server
 
     def tearDown(self): # (3)
         self.browser.quit()
