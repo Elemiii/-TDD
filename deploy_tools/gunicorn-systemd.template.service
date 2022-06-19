@@ -1,11 +1,11 @@
 [Unit]
-Description=Gunicorn server for 47.111.64.105
+Description=Gunicorn server for SITENAME
 
 [Service]
 Restart=on-failure
-User=elemi
-WorkingDirectory=/home/elemi/sites/47.111.64.105/source
-ExecStart=/home/elemi/sites/47.111.64.105/virtualenv/bin/gunicorn --bind unix:/tmp/47.111.64.105.socket superlists.wsgi:application
+User=root
+WorkingDirectory=/home/root/sites/SITENAME/source
+ExecStart=/home/root/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket superlists.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
